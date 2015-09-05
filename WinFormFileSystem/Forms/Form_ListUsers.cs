@@ -36,14 +36,14 @@ namespace WinFormFileSystem.Forms
                 MessageBox.Show("Exception!");
                 return;
             }
-            if (userInfoList.UserInfoList_.Count == 0)
+            if (userInfoList.UserInfo.Count == 0)
             {
 
                 MessageBox.Show("暂无用户存在");
                 this.Close();
             }
             this.listView_UserLists.BeginUpdate();
-            foreach (UserInfo userInfo in userInfoList.UserInfoList_)
+            foreach (UserInfo userInfo in userInfoList.UserInfo)
             {
                 ListViewItem item = listView_UserLists.Items.Add(userInfo.Uid.ToString());
                 item.SubItems.Add(userInfo.Uname);
