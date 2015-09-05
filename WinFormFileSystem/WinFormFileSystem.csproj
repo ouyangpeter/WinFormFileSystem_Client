@@ -81,6 +81,7 @@
       <DependentUpon>Form_test.cs</DependentUpon>
     </Compile>
     <Compile Include="HttpRequest\HttpClientBase.cs" />
+    <Compile Include="HttpRequest\HttpClientGetDirInfo.cs" />
     <Compile Include="HttpRequest\HttpClientGetUserCounts.cs" />
     <Compile Include="HttpRequest\HttpClientListUsers.cs" />
     <Compile Include="HttpRequest\HttpClientLogin.cs" />
