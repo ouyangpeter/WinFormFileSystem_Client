@@ -23,15 +23,21 @@ namespace Filesystem {
           string.Concat(
             "ChBmaWxlc3lzdGVtLnByb3RvEgpmaWxlc3lzdGVtIkMKCFVzZXJJbmZvEg0K", 
             "BXVuYW1lGAEgASgJEg4KBnBhc3N3ZBgCIAEoCRILCgN1aWQYAyABKA0SCwoD", 
-            "Z2lkGAQgASgNIjwKDFVzZXJJbmZvTGlzdBIsCg51c2VyX2luZm9fbGlzdBgB", 
-            "IAMoCzIULmZpbGVzeXN0ZW0uVXNlckluZm8iJAoGVWlkTWFwEgsKA3VpZBgB", 
-            "IAEoDRINCgV1bmFtZRgCIAEoCWIGcHJvdG8z"));
+            "Z2lkGAQgASgNIjcKDFVzZXJJbmZvTGlzdBInCgl1c2VyX2luZm8YASADKAsy", 
+            "FC5maWxlc3lzdGVtLlVzZXJJbmZvIiQKBlVpZE1hcBILCgN1aWQYASABKA0S", 
+            "DQoFdW5hbWUYAiABKAkifAoIRmlsZUluZm8SEQoJZmlsZV9uYW1lGAEgASgJ", 
+            "EgwKBHR5cGUYAiABKA0SDgoGbGVuZ3RoGAMgASgNEhIKCmZhdGhlcl9kaXIY", 
+            "BCABKAkSDQoFb3duZXIYBSABKAkSDQoFZ3JvdXAYBiABKAkSDQoFcG93ZXIY", 
+            "ByABKA0iMgoHRGlySW5mbxInCglmaWxlX2luZm8YASADKAsyFC5maWxlc3lz", 
+            "dGVtLkZpbGVJbmZvYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.InternalBuildGeneratedFileFrom(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedCodeInfo(null, new pbr::GeneratedCodeInfo[] {
             new pbr::GeneratedCodeInfo(typeof(global::Filesystem.UserInfo), new[]{ "Uname", "Passwd", "Uid", "Gid" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Filesystem.UserInfoList), new[]{ "UserInfoList_" }, null, null, null),
-            new pbr::GeneratedCodeInfo(typeof(global::Filesystem.UidMap), new[]{ "Uid", "Uname" }, null, null, null)
+            new pbr::GeneratedCodeInfo(typeof(global::Filesystem.UserInfoList), new[]{ "UserInfo" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Filesystem.UidMap), new[]{ "Uid", "Uname" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Filesystem.FileInfo), new[]{ "FileName", "Type", "Length", "FatherDir", "Owner", "Group", "Power" }, null, null, null),
+            new pbr::GeneratedCodeInfo(typeof(global::Filesystem.DirInfo), new[]{ "FileInfo" }, null, null, null)
           }));
     }
     #endregion
@@ -238,19 +244,19 @@ namespace Filesystem {
     partial void OnConstruction();
 
     public UserInfoList(UserInfoList other) : this() {
-      userInfoList_ = other.userInfoList_.Clone();
+      userInfo_ = other.userInfo_.Clone();
     }
 
     public UserInfoList Clone() {
       return new UserInfoList(this);
     }
 
-    public const int UserInfoList_FieldNumber = 1;
-    private static readonly pb::FieldCodec<global::Filesystem.UserInfo> _repeated_userInfoList_codec
+    public const int UserInfoFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Filesystem.UserInfo> _repeated_userInfo_codec
         = pb::FieldCodec.ForMessage(10, global::Filesystem.UserInfo.Parser);
-    private readonly pbc::RepeatedField<global::Filesystem.UserInfo> userInfoList_ = new pbc::RepeatedField<global::Filesystem.UserInfo>();
-    public pbc::RepeatedField<global::Filesystem.UserInfo> UserInfoList_ {
-      get { return userInfoList_; }
+    private readonly pbc::RepeatedField<global::Filesystem.UserInfo> userInfo_ = new pbc::RepeatedField<global::Filesystem.UserInfo>();
+    public pbc::RepeatedField<global::Filesystem.UserInfo> UserInfo {
+      get { return userInfo_; }
     }
 
     public override bool Equals(object other) {
@@ -264,13 +270,13 @@ namespace Filesystem {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if(!userInfoList_.Equals(other.userInfoList_)) return false;
+      if(!userInfo_.Equals(other.userInfo_)) return false;
       return true;
     }
 
     public override int GetHashCode() {
       int hash = 1;
-      hash ^= userInfoList_.GetHashCode();
+      hash ^= userInfo_.GetHashCode();
       return hash;
     }
 
@@ -279,12 +285,12 @@ namespace Filesystem {
     }
 
     public void WriteTo(pb::CodedOutputStream output) {
-      userInfoList_.WriteTo(output, _repeated_userInfoList_codec);
+      userInfo_.WriteTo(output, _repeated_userInfo_codec);
     }
 
     public int CalculateSize() {
       int size = 0;
-      size += userInfoList_.CalculateSize(_repeated_userInfoList_codec);
+      size += userInfo_.CalculateSize(_repeated_userInfo_codec);
       return size;
     }
 
@@ -292,7 +298,7 @@ namespace Filesystem {
       if (other == null) {
         return;
       }
-      userInfoList_.Add(other.userInfoList_);
+      userInfo_.Add(other.userInfo_);
     }
 
     public void MergeFrom(pb::CodedInputStream input) {
@@ -303,7 +309,7 @@ namespace Filesystem {
             input.SkipLastField();
             break;
           case 10: {
-            userInfoList_.AddEntriesFrom(input, _repeated_userInfoList_codec);
+            userInfo_.AddEntriesFrom(input, _repeated_userInfo_codec);
             break;
           }
         }
@@ -432,6 +438,358 @@ namespace Filesystem {
           }
           case 18: {
             Uname = input.ReadString();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class FileInfo : pb::IMessage<FileInfo> {
+    private static readonly pb::MessageParser<FileInfo> _parser = new pb::MessageParser<FileInfo>(() => new FileInfo());
+    public static pb::MessageParser<FileInfo> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Filesystem.Filesystem.Descriptor.MessageTypes[3]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public FileInfo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public FileInfo(FileInfo other) : this() {
+      fileName_ = other.fileName_;
+      type_ = other.type_;
+      length_ = other.length_;
+      fatherDir_ = other.fatherDir_;
+      owner_ = other.owner_;
+      group_ = other.group_;
+      power_ = other.power_;
+    }
+
+    public FileInfo Clone() {
+      return new FileInfo(this);
+    }
+
+    public const int FileNameFieldNumber = 1;
+    private string fileName_ = "";
+    public string FileName {
+      get { return fileName_; }
+      set {
+        fileName_ = pb::Preconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public const int TypeFieldNumber = 2;
+    private uint type_;
+    public uint Type {
+      get { return type_; }
+      set {
+        type_ = value;
+      }
+    }
+
+    public const int LengthFieldNumber = 3;
+    private uint length_;
+    public uint Length {
+      get { return length_; }
+      set {
+        length_ = value;
+      }
+    }
+
+    public const int FatherDirFieldNumber = 4;
+    private string fatherDir_ = "";
+    public string FatherDir {
+      get { return fatherDir_; }
+      set {
+        fatherDir_ = pb::Preconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public const int OwnerFieldNumber = 5;
+    private string owner_ = "";
+    public string Owner {
+      get { return owner_; }
+      set {
+        owner_ = pb::Preconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public const int GroupFieldNumber = 6;
+    private string group_ = "";
+    public string Group {
+      get { return group_; }
+      set {
+        group_ = pb::Preconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    public const int PowerFieldNumber = 7;
+    private uint power_;
+    public uint Power {
+      get { return power_; }
+      set {
+        power_ = value;
+      }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as FileInfo);
+    }
+
+    public bool Equals(FileInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (FileName != other.FileName) return false;
+      if (Type != other.Type) return false;
+      if (Length != other.Length) return false;
+      if (FatherDir != other.FatherDir) return false;
+      if (Owner != other.Owner) return false;
+      if (Group != other.Group) return false;
+      if (Power != other.Power) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      if (FileName.Length != 0) hash ^= FileName.GetHashCode();
+      if (Type != 0) hash ^= Type.GetHashCode();
+      if (Length != 0) hash ^= Length.GetHashCode();
+      if (FatherDir.Length != 0) hash ^= FatherDir.GetHashCode();
+      if (Owner.Length != 0) hash ^= Owner.GetHashCode();
+      if (Group.Length != 0) hash ^= Group.GetHashCode();
+      if (Power != 0) hash ^= Power.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.Default.Format(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      if (FileName.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(FileName);
+      }
+      if (Type != 0) {
+        output.WriteRawTag(16);
+        output.WriteUInt32(Type);
+      }
+      if (Length != 0) {
+        output.WriteRawTag(24);
+        output.WriteUInt32(Length);
+      }
+      if (FatherDir.Length != 0) {
+        output.WriteRawTag(34);
+        output.WriteString(FatherDir);
+      }
+      if (Owner.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Owner);
+      }
+      if (Group.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(Group);
+      }
+      if (Power != 0) {
+        output.WriteRawTag(56);
+        output.WriteUInt32(Power);
+      }
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      if (FileName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FileName);
+      }
+      if (Type != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Type);
+      }
+      if (Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Length);
+      }
+      if (FatherDir.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(FatherDir);
+      }
+      if (Owner.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Owner);
+      }
+      if (Group.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Group);
+      }
+      if (Power != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeUInt32Size(Power);
+      }
+      return size;
+    }
+
+    public void MergeFrom(FileInfo other) {
+      if (other == null) {
+        return;
+      }
+      if (other.FileName.Length != 0) {
+        FileName = other.FileName;
+      }
+      if (other.Type != 0) {
+        Type = other.Type;
+      }
+      if (other.Length != 0) {
+        Length = other.Length;
+      }
+      if (other.FatherDir.Length != 0) {
+        FatherDir = other.FatherDir;
+      }
+      if (other.Owner.Length != 0) {
+        Owner = other.Owner;
+      }
+      if (other.Group.Length != 0) {
+        Group = other.Group;
+      }
+      if (other.Power != 0) {
+        Power = other.Power;
+      }
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            FileName = input.ReadString();
+            break;
+          }
+          case 16: {
+            Type = input.ReadUInt32();
+            break;
+          }
+          case 24: {
+            Length = input.ReadUInt32();
+            break;
+          }
+          case 34: {
+            FatherDir = input.ReadString();
+            break;
+          }
+          case 42: {
+            Owner = input.ReadString();
+            break;
+          }
+          case 50: {
+            Group = input.ReadString();
+            break;
+          }
+          case 56: {
+            Power = input.ReadUInt32();
+            break;
+          }
+        }
+      }
+    }
+
+  }
+
+  [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+  public sealed partial class DirInfo : pb::IMessage<DirInfo> {
+    private static readonly pb::MessageParser<DirInfo> _parser = new pb::MessageParser<DirInfo>(() => new DirInfo());
+    public static pb::MessageParser<DirInfo> Parser { get { return _parser; } }
+
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Filesystem.Filesystem.Descriptor.MessageTypes[4]; }
+    }
+
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    public DirInfo() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    public DirInfo(DirInfo other) : this() {
+      fileInfo_ = other.fileInfo_.Clone();
+    }
+
+    public DirInfo Clone() {
+      return new DirInfo(this);
+    }
+
+    public const int FileInfoFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::Filesystem.FileInfo> _repeated_fileInfo_codec
+        = pb::FieldCodec.ForMessage(10, global::Filesystem.FileInfo.Parser);
+    private readonly pbc::RepeatedField<global::Filesystem.FileInfo> fileInfo_ = new pbc::RepeatedField<global::Filesystem.FileInfo>();
+    public pbc::RepeatedField<global::Filesystem.FileInfo> FileInfo {
+      get { return fileInfo_; }
+    }
+
+    public override bool Equals(object other) {
+      return Equals(other as DirInfo);
+    }
+
+    public bool Equals(DirInfo other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!fileInfo_.Equals(other.fileInfo_)) return false;
+      return true;
+    }
+
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= fileInfo_.GetHashCode();
+      return hash;
+    }
+
+    public override string ToString() {
+      return pb::JsonFormatter.Default.Format(this);
+    }
+
+    public void WriteTo(pb::CodedOutputStream output) {
+      fileInfo_.WriteTo(output, _repeated_fileInfo_codec);
+    }
+
+    public int CalculateSize() {
+      int size = 0;
+      size += fileInfo_.CalculateSize(_repeated_fileInfo_codec);
+      return size;
+    }
+
+    public void MergeFrom(DirInfo other) {
+      if (other == null) {
+        return;
+      }
+      fileInfo_.Add(other.fileInfo_);
+    }
+
+    public void MergeFrom(pb::CodedInputStream input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            input.SkipLastField();
+            break;
+          case 10: {
+            fileInfo_.AddEntriesFrom(input, _repeated_fileInfo_codec);
             break;
           }
         }
