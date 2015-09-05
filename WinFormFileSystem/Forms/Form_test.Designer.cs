@@ -32,7 +32,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.radioButton_test = new System.Windows.Forms.RadioButton();
             this.radioButton_getUserCounts = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.radioButton_login = new System.Windows.Forms.RadioButton();
             this.radioButton4 = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
@@ -76,15 +76,15 @@
             this.radioButton_getUserCounts.Text = "getUserCounts";
             this.radioButton_getUserCounts.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // radioButton_login
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(12, 62);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(95, 16);
-            this.radioButton3.TabIndex = 5;
-            this.radioButton3.Text = "radioButton3";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.radioButton_login.AutoSize = true;
+            this.radioButton_login.Location = new System.Drawing.Point(12, 62);
+            this.radioButton_login.Name = "radioButton_login";
+            this.radioButton_login.Size = new System.Drawing.Size(53, 16);
+            this.radioButton_login.TabIndex = 5;
+            this.radioButton_login.Text = "Login";
+            this.radioButton_login.UseVisualStyleBackColor = true;
             // 
             // radioButton4
             // 
@@ -101,7 +101,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 289);
-            this.Controls.Add(this.radioButton3);
+            this.Controls.Add(this.radioButton_login);
             this.Controls.Add(this.radioButton4);
             this.Controls.Add(this.radioButton_getUserCounts);
             this.Controls.Add(this.radioButton_test);
@@ -123,7 +123,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.RadioButton radioButton_test;
         private System.Windows.Forms.RadioButton radioButton_getUserCounts;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton radioButton_login;
         private System.Windows.Forms.RadioButton radioButton4;
     }
 }

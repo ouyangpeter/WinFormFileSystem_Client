@@ -66,6 +66,17 @@ namespace WinFormFileSystem.Forms
                 string response = Convert.ToUInt64(httpClient.GetResponse()).ToString();
                 DebugWrite("Counts: " +response);
             }
+
+            if(radioButton_login.Checked)
+            {
+                httpClient = new HttpClientLogin();
+                string uname = "user1";
+                string passwd = "123456";
+                httpClient.AddHeader("user-uname", uname);
+                httpClient.AddHeader("user-passwd", passwd);
+                string response = Convert.ToBoolean(httpClient.GetResponse()).ToString();
+                DebugWrite("result: " + response);
+            }
            
 
         }
