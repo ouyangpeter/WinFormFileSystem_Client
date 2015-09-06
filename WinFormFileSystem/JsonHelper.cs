@@ -28,6 +28,18 @@ namespace WinFormFileSystem
             Debug.WriteLine(jsonObj.ToString());
             return jsonObj[key].ToString();
         }
+
+        public bool IsSuccess()
+        {
+            if (GetVal("Result").ToLower() == "true")
+                return true;
+            return false;
+        }
+
+        public string GetErrorMsg()
+        {
+            return GetVal("ErrorMsg");
+        }
          
 
     }
