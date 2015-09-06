@@ -36,6 +36,8 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.textBox_curDir = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listView_Dir
@@ -48,12 +50,14 @@
             this.columnHeader5,
             this.columnHeader6,
             this.columnHeader7});
-            this.listView_Dir.Location = new System.Drawing.Point(31, 25);
+            this.listView_Dir.FullRowSelect = true;
+            this.listView_Dir.Location = new System.Drawing.Point(31, 41);
             this.listView_Dir.Name = "listView_Dir";
-            this.listView_Dir.Size = new System.Drawing.Size(713, 384);
+            this.listView_Dir.Size = new System.Drawing.Size(713, 368);
             this.listView_Dir.TabIndex = 0;
             this.listView_Dir.UseCompatibleStateImageBehavior = false;
             this.listView_Dir.View = System.Windows.Forms.View.Details;
+            this.listView_Dir.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_Dir_MouseDoubleClick);
             // 
             // columnHeader1
             // 
@@ -88,11 +92,30 @@
             this.columnHeader7.Text = "权限";
             this.columnHeader7.Width = 100;
             // 
+            // textBox_curDir
+            // 
+            this.textBox_curDir.Location = new System.Drawing.Point(113, 14);
+            this.textBox_curDir.Name = "textBox_curDir";
+            this.textBox_curDir.ReadOnly = true;
+            this.textBox_curDir.Size = new System.Drawing.Size(631, 21);
+            this.textBox_curDir.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(56, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "当前目录";
+            // 
             // Form_FileSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(767, 437);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.textBox_curDir);
             this.Controls.Add(this.listView_Dir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -101,6 +124,7 @@
             this.Text = "文件系统";
             this.Load += new System.EventHandler(this.Form_FileSystem_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -114,5 +138,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.TextBox textBox_curDir;
+        private System.Windows.Forms.Label label1;
     }
 }

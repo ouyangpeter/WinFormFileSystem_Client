@@ -47,7 +47,7 @@ namespace WinFormFileSystem.Forms
             HttpClientBase httpClient;
             if(radioButton_test.Checked)
             {
-                string uri = "http://123.57.68.8:8000/api/test";
+                string uri = "http://123.57.68.8:8000/api/fileOperation";
                 HttpClient client = new HttpClient();
                 client.DefaultRequestHeaders.Add("user-uname", "test1234");
                 client.DefaultRequestHeaders.Add("user-passwd", "hahaha");

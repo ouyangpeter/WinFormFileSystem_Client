@@ -52,6 +52,7 @@
             this.columnHeader_uname,
             this.columnHeader_passwd,
             this.columnHeader_gid});
+            this.listView_UserLists.FullRowSelect = true;
             this.listView_UserLists.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
             this.listView_UserLists.Location = new System.Drawing.Point(12, 12);
             this.listView_UserLists.Name = "listView_UserLists";
