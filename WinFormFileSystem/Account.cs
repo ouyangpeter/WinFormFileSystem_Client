@@ -10,6 +10,7 @@ namespace WinFormFileSystem
     {
         private static string uname;
         private static string passwd;
+
         public static void SetUname(string _uname)
         {
             uname = _uname;
@@ -27,5 +28,6 @@ namespace WinFormFileSystem
         {
             return passwd;
         }
+   
     }
 }
