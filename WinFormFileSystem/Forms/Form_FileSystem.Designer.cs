@@ -37,13 +37,15 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.toolStripMenuItem_NewDir = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_curDir = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button_back = new System.Windows.Forms.Button();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem_NewDir = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_NewDirName = new System.Windows.Forms.TextBox();
             this.button_NewDir = new System.Windows.Forms.Button();
+            this.textBox_NewFileName = new System.Windows.Forms.TextBox();
+            this.button_NewFile = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -100,6 +102,20 @@
             this.columnHeader7.Text = "权限";
             this.columnHeader7.Width = 100;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem_NewDir});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 26);
+            // 
+            // toolStripMenuItem_NewDir
+            // 
+            this.toolStripMenuItem_NewDir.Name = "toolStripMenuItem_NewDir";
+            this.toolStripMenuItem_NewDir.Size = new System.Drawing.Size(136, 22);
+            this.toolStripMenuItem_NewDir.Text = "新建文件夹";
+            this.toolStripMenuItem_NewDir.Click += new System.EventHandler(this.toolStripMenuItem_NewDir_Click);
+            // 
             // textBox_curDir
             // 
             this.textBox_curDir.Location = new System.Drawing.Point(141, 14);
@@ -127,20 +143,6 @@
             this.button_back.UseVisualStyleBackColor = true;
             this.button_back.Click += new System.EventHandler(this.button_back_Click);
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem_NewDir});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 26);
-            // 
-            // toolStripMenuItem_NewDir
-            // 
-            this.toolStripMenuItem_NewDir.Name = "toolStripMenuItem_NewDir";
-            this.toolStripMenuItem_NewDir.Size = new System.Drawing.Size(136, 22);
-            this.toolStripMenuItem_NewDir.Text = "新建文件夹";
-            this.toolStripMenuItem_NewDir.Click += new System.EventHandler(this.toolStripMenuItem_NewDir_Click);
-            // 
             // textBox_NewDirName
             // 
             this.textBox_NewDirName.Location = new System.Drawing.Point(699, 76);
@@ -158,12 +160,31 @@
             this.button_NewDir.UseVisualStyleBackColor = true;
             this.button_NewDir.Click += new System.EventHandler(this.button_NewDir_Click);
             // 
+            // textBox_NewFileName
+            // 
+            this.textBox_NewFileName.Location = new System.Drawing.Point(699, 127);
+            this.textBox_NewFileName.Name = "textBox_NewFileName";
+            this.textBox_NewFileName.Size = new System.Drawing.Size(137, 21);
+            this.textBox_NewFileName.TabIndex = 4;
+            // 
+            // button_NewFile
+            // 
+            this.button_NewFile.Location = new System.Drawing.Point(867, 126);
+            this.button_NewFile.Name = "button_NewFile";
+            this.button_NewFile.Size = new System.Drawing.Size(75, 23);
+            this.button_NewFile.TabIndex = 5;
+            this.button_NewFile.Text = "新建文件";
+            this.button_NewFile.UseVisualStyleBackColor = true;
+            this.button_NewFile.Click += new System.EventHandler(this.button_NewFile_Click);
+            // 
             // Form_FileSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1001, 437);
+            this.Controls.Add(this.button_NewFile);
             this.Controls.Add(this.button_NewDir);
+            this.Controls.Add(this.textBox_NewFileName);
             this.Controls.Add(this.textBox_NewDirName);
             this.Controls.Add(this.button_back);
             this.Controls.Add(this.label1);
@@ -198,5 +219,7 @@
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_NewDir;
         private System.Windows.Forms.TextBox textBox_NewDirName;
         private System.Windows.Forms.Button button_NewDir;
+        private System.Windows.Forms.TextBox textBox_NewFileName;
+        private System.Windows.Forms.Button button_NewFile;
     }
 }

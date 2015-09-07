@@ -40,6 +40,10 @@ namespace WinFormFileSystem
         {
             return GetVal("ErrorMsg");
         }
+        public string GetContext()
+        {
+            return GetVal("Context");
+        }
          
 
     }

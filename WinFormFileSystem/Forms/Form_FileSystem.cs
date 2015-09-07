@@ -66,11 +66,20 @@ namespace WinFormFileSystem.Forms
             {
                 if (DoCommond("cd", fileName))
                 {
-                    //TODO
-                    //                    Debug.WriteLine("cd true");
                     ListDir(fileName);
                     textBox_curDir.Text = textBox_curDir.Text + fileName + "/";
                     curDir = fileName;
+                }
+                else
+                {
+                    MessageBox.Show(jsonHelper.GetErrorMsg());
+                }
+            }
+            else if("1" == fileType)
+            {
+                if(DoCommond("readFile", fileName))
+                {
+                    
                 }
                 else
                 {
@@ -93,7 +102,47 @@ namespace WinFormFileSystem.Forms
             {
                 return Commond_newDir(prams);
             }
+            else if(commond == "newFile")
+            {
+                return Commond_newFile(prams);
+            }
+            else if(commond == "readFile")
+            {
+                return Commond_readFile(prams);
+            }
             return false;
+        }
+
+        bool Commond_readFile(string fileName)
+        {
+            string uname = Account.GetUname();
+            string passwd = Account.GetPasswd();
+            HttpClientBase httpClient = new HttpClientFileOperation();
+            httpClient.AddHeader("user-uname", uname);
+            httpClient.AddHeader("user-passwd", passwd);
+            httpClient.AddHeader("file-commond", "readFile");
+            httpClient.AddHeader("file-params", fileName);
+            httpClient.AddHeader("dir-ls", curDir);
+            jsonHelper = (JsonHelper)httpClient.GetResponse();
+            if (!jsonHelper.IsSuccess())
+                return jsonHelper.IsSuccess();
+            Form_readFile form_readFile = new Form_readFile(fileName, jsonHelper.GetContext());
+            form_readFile.ShowDialog();
+            return jsonHelper.IsSuccess();
+        }
+
+        bool Commond_newFile(string newFileName)
+        {
+            string uname = Account.GetUname();
+            string passwd = Account.GetPasswd();
+            HttpClientBase httpClient = new HttpClientFileOperation();
+            httpClient.AddHeader("user-uname", uname);
+            httpClient.AddHeader("user-passwd", passwd);
+            httpClient.AddHeader("file-commond", "newFile");
+            httpClient.AddHeader("file-params", newFileName);
+            httpClient.AddHeader("dir-ls", curDir);
+            jsonHelper = (JsonHelper)httpClient.GetResponse();
+            return jsonHelper.IsSuccess();
         }
 
         bool Commond_newDir(string newDirName)
@@ -182,6 +231,25 @@ namespace WinFormFileSystem.Forms
             if(DoCommond("newDir", newDirName))
             {
                 textBox_NewDirName.Text = "";
+                ListDir(curDir);
+            }
+            else
+            {
+                MessageBox.Show(jsonHelper.GetErrorMsg());
+            }
+        }
+
+        private void button_NewFile_Click(object sender, EventArgs e)
+        {
+            string newDirName = textBox_NewFileName.Text.Trim();
+            if (newDirName == "")
+            {
+                MessageBox.Show("文件名字不能为空");
+                return;
+            }
+            if (DoCommond("newFile", newDirName))
+            {
+                textBox_NewFileName.Text = "";
                 ListDir(curDir);
             }
             else
