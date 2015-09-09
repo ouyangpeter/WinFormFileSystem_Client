@@ -49,7 +49,7 @@ namespace WinFormFileSystem.Forms
             foreach (FileInfo fileInfo in dirInfo.FileInfo)
             {
                 ListViewItem item = listView_Dir.Items.Add(fileInfo.FileName);
-                item.SubItems.Add(fileInfo.Type.ToString());
+                item.SubItems.Add(fileInfo.Type.ToString() == "0"?"目录":"文件");
                 item.SubItems.Add(fileInfo.Length.ToString());
                 item.SubItems.Add(fileInfo.FatherDir);
                 item.SubItems.Add(fileInfo.Owner);
@@ -64,7 +64,7 @@ namespace WinFormFileSystem.Forms
         {
             string fileName = listView_Dir.SelectedItems[0].SubItems[0].Text;
             string fileType = listView_Dir.SelectedItems[0].SubItems[1].Text;
-            if ("0" == fileType)
+            if ("目录" == fileType)
             {
                 if (DoCommond("cd", fileName))
                 {
@@ -77,7 +77,7 @@ namespace WinFormFileSystem.Forms
                     MessageBox.Show(jsonHelper.GetErrorMsg());
                 }
             }
-            else if ("1" == fileType)
+            else if ("文件" == fileType)
             {
                 if (DoCommond("readFile", fileName))
                 {
@@ -333,7 +333,7 @@ namespace WinFormFileSystem.Forms
                 return;
             }
 
-            if (fileType == "0") //文件夹
+            if (fileType == "目录") //文件夹
             {
                 if (DoCommond("delDir", fileName))
                 {
@@ -344,7 +344,7 @@ namespace WinFormFileSystem.Forms
                     MessageBox.Show(jsonHelper.GetErrorMsg());
                 }
             }
-            else if (fileType == "1")
+            else if (fileType == "文件")
             {
                 if (DoCommond("delFile", fileName))
                 {
@@ -394,7 +394,7 @@ namespace WinFormFileSystem.Forms
                 MessageBox.Show("没有输入要写入的字符");
                 return;
             }
-            if(fileType == "0")
+            if(fileType == "目录")
             {
                 MessageBox.Show("不能对文件夹写入");
                 return;
@@ -419,8 +419,6 @@ namespace WinFormFileSystem.Forms
                 MessageBox.Show(jsonHelper.GetErrorMsg());
             }
         }
-
-
 
     }
 }

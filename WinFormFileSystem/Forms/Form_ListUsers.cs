@@ -47,7 +47,7 @@ namespace WinFormFileSystem.Forms
             {
                 ListViewItem item = listView_UserLists.Items.Add(userInfo.Uid.ToString());
                 item.SubItems.Add(userInfo.Uname);
-                item.SubItems.Add(userInfo.Passwd);
+                item.SubItems.Add("******");
                 item.SubItems.Add(userInfo.Gid.ToString());
             }
             this.listView_UserLists.EndUpdate();
