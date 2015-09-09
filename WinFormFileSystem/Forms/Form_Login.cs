@@ -10,6 +10,7 @@ using System.Threading;
 using WinFormFileSystem.HttpRequest;
 using System.Diagnostics;
 
+
 namespace WinFormFileSystem.Forms
 {
     public partial class Form_Login : Form
@@ -75,6 +76,17 @@ namespace WinFormFileSystem.Forms
             {
                 button_signin_Click(null, null);
             }
+        }
+
+        private void Form_Login_Load(object sender, EventArgs e)
+        {
+            HttpClientBase httpClient = new HttpClientIsAvailable();
+            JsonHelper jsonHelper = (JsonHelper)httpClient.GetResponse();
+            if (!jsonHelper.IsSuccess())
+            {
+                MessageBox.Show("连接Server失败，请检查网络");
+            }
+
         }
 
 

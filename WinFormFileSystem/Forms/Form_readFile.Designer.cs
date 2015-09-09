@@ -50,6 +50,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_readFile";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_readFile";
             this.Load += new System.EventHandler(this.Form_readFile_Load);
             this.ResumeLayout(false);

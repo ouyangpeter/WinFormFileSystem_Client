@@ -38,7 +38,7 @@
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripMenuItem_NewDir = new System.Windows.Forms.ToolStripMenuItem();
+            this.删除ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.textBox_curDir = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button_back = new System.Windows.Forms.Button();
@@ -46,7 +46,20 @@
             this.button_NewDir = new System.Windows.Forms.Button();
             this.textBox_NewFileName = new System.Windows.Forms.TextBox();
             this.button_NewFile = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton_Refresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_exit = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_save = new System.Windows.Forms.ToolStripButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_Free = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_Used = new System.Windows.Forms.ToolStripStatusLabel();
+            this.textBox_input = new System.Windows.Forms.TextBox();
+            this.button_write = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // listView_Dir
@@ -61,7 +74,7 @@
             this.columnHeader7});
             this.listView_Dir.ContextMenuStrip = this.contextMenuStrip1;
             this.listView_Dir.FullRowSelect = true;
-            this.listView_Dir.Location = new System.Drawing.Point(31, 41);
+            this.listView_Dir.Location = new System.Drawing.Point(31, 58);
             this.listView_Dir.Name = "listView_Dir";
             this.listView_Dir.Size = new System.Drawing.Size(638, 368);
             this.listView_Dir.TabIndex = 0;
@@ -105,20 +118,20 @@
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem_NewDir});
+            this.删除ToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(137, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(101, 26);
             // 
-            // toolStripMenuItem_NewDir
+            // 删除ToolStripMenuItem
             // 
-            this.toolStripMenuItem_NewDir.Name = "toolStripMenuItem_NewDir";
-            this.toolStripMenuItem_NewDir.Size = new System.Drawing.Size(136, 22);
-            this.toolStripMenuItem_NewDir.Text = "新建文件夹";
-            this.toolStripMenuItem_NewDir.Click += new System.EventHandler(this.toolStripMenuItem_NewDir_Click);
+            this.删除ToolStripMenuItem.Name = "删除ToolStripMenuItem";
+            this.删除ToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
+            this.删除ToolStripMenuItem.Text = "删除";
+            this.删除ToolStripMenuItem.Click += new System.EventHandler(this.删除ToolStripMenuItem_Click);
             // 
             // textBox_curDir
             // 
-            this.textBox_curDir.Location = new System.Drawing.Point(141, 14);
+            this.textBox_curDir.Location = new System.Drawing.Point(141, 31);
             this.textBox_curDir.Name = "textBox_curDir";
             this.textBox_curDir.ReadOnly = true;
             this.textBox_curDir.Size = new System.Drawing.Size(528, 21);
@@ -127,7 +140,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(82, 17);
+            this.label1.Location = new System.Drawing.Point(82, 34);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
             this.label1.TabIndex = 2;
@@ -135,7 +148,7 @@
             // 
             // button_back
             // 
-            this.button_back.Location = new System.Drawing.Point(31, 14);
+            this.button_back.Location = new System.Drawing.Point(31, 31);
             this.button_back.Name = "button_back";
             this.button_back.Size = new System.Drawing.Size(52, 23);
             this.button_back.TabIndex = 3;
@@ -145,14 +158,14 @@
             // 
             // textBox_NewDirName
             // 
-            this.textBox_NewDirName.Location = new System.Drawing.Point(699, 76);
+            this.textBox_NewDirName.Location = new System.Drawing.Point(699, 93);
             this.textBox_NewDirName.Name = "textBox_NewDirName";
             this.textBox_NewDirName.Size = new System.Drawing.Size(137, 21);
             this.textBox_NewDirName.TabIndex = 4;
             // 
             // button_NewDir
             // 
-            this.button_NewDir.Location = new System.Drawing.Point(867, 75);
+            this.button_NewDir.Location = new System.Drawing.Point(867, 92);
             this.button_NewDir.Name = "button_NewDir";
             this.button_NewDir.Size = new System.Drawing.Size(75, 23);
             this.button_NewDir.TabIndex = 5;
@@ -162,14 +175,14 @@
             // 
             // textBox_NewFileName
             // 
-            this.textBox_NewFileName.Location = new System.Drawing.Point(699, 127);
+            this.textBox_NewFileName.Location = new System.Drawing.Point(699, 144);
             this.textBox_NewFileName.Name = "textBox_NewFileName";
             this.textBox_NewFileName.Size = new System.Drawing.Size(137, 21);
             this.textBox_NewFileName.TabIndex = 4;
             // 
             // button_NewFile
             // 
-            this.button_NewFile.Location = new System.Drawing.Point(867, 126);
+            this.button_NewFile.Location = new System.Drawing.Point(867, 143);
             this.button_NewFile.Name = "button_NewFile";
             this.button_NewFile.Size = new System.Drawing.Size(75, 23);
             this.button_NewFile.TabIndex = 5;
@@ -177,11 +190,114 @@
             this.button_NewFile.UseVisualStyleBackColor = true;
             this.button_NewFile.Click += new System.EventHandler(this.button_NewFile_Click);
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripButton_Refresh,
+            this.toolStripButton_exit,
+            this.toolStripButton_save});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1001, 25);
+            this.toolStrip1.TabIndex = 6;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // toolStripButton_Refresh
+            // 
+            this.toolStripButton_Refresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_Refresh.Image = global::WinFormFileSystem.Properties.Resources.refresh;
+            this.toolStripButton_Refresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Refresh.Name = "toolStripButton_Refresh";
+            this.toolStripButton_Refresh.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_Refresh.Text = "刷新";
+            this.toolStripButton_Refresh.Click += new System.EventHandler(this.toolStripButton_Refresh_Click);
+            // 
+            // toolStripButton_exit
+            // 
+            this.toolStripButton_exit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_exit.Image = global::WinFormFileSystem.Properties.Resources.exit;
+            this.toolStripButton_exit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_exit.Name = "toolStripButton_exit";
+            this.toolStripButton_exit.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_exit.Text = "退出";
+            this.toolStripButton_exit.Click += new System.EventHandler(this.toolStripButton_exit_Click);
+            // 
+            // toolStripButton_save
+            // 
+            this.toolStripButton_save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_save.Image = global::WinFormFileSystem.Properties.Resources.save;
+            this.toolStripButton_save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_save.Name = "toolStripButton_save";
+            this.toolStripButton_save.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_save.Text = "存盘";
+            this.toolStripButton_save.Click += new System.EventHandler(this.toolStripButton_save_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.toolStripStatusLabel_Free,
+            this.toolStripStatusLabel2,
+            this.toolStripStatusLabel_Used});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 439);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1001, 22);
+            this.statusStrip1.TabIndex = 7;
+            this.statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.Visible = false;
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(80, 17);
+            this.toolStripStatusLabel1.Text = "空闲盘块数：";
+            // 
+            // toolStripStatusLabel_Free
+            // 
+            this.toolStripStatusLabel_Free.Name = "toolStripStatusLabel_Free";
+            this.toolStripStatusLabel_Free.Size = new System.Drawing.Size(39, 17);
+            this.toolStripStatusLabel_Free.Text = "NULL";
+            // 
+            // toolStripStatusLabel2
+            // 
+            this.toolStripStatusLabel2.Margin = new System.Windows.Forms.Padding(10, 3, 0, 2);
+            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
+            this.toolStripStatusLabel2.Size = new System.Drawing.Size(80, 17);
+            this.toolStripStatusLabel2.Text = "使用盘块数：";
+            // 
+            // toolStripStatusLabel_Used
+            // 
+            this.toolStripStatusLabel_Used.Name = "toolStripStatusLabel_Used";
+            this.toolStripStatusLabel_Used.Size = new System.Drawing.Size(39, 17);
+            this.toolStripStatusLabel_Used.Text = "NULL";
+            // 
+            // textBox_input
+            // 
+            this.textBox_input.Location = new System.Drawing.Point(699, 208);
+            this.textBox_input.Multiline = true;
+            this.textBox_input.Name = "textBox_input";
+            this.textBox_input.Size = new System.Drawing.Size(213, 173);
+            this.textBox_input.TabIndex = 8;
+            // 
+            // button_write
+            // 
+            this.button_write.Location = new System.Drawing.Point(867, 387);
+            this.button_write.Name = "button_write";
+            this.button_write.Size = new System.Drawing.Size(75, 23);
+            this.button_write.TabIndex = 9;
+            this.button_write.Text = "写到文件";
+            this.button_write.UseVisualStyleBackColor = true;
+            this.button_write.Click += new System.EventHandler(this.button_write_Click);
+            // 
             // Form_FileSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1001, 437);
+            this.ClientSize = new System.Drawing.Size(1001, 461);
+            this.Controls.Add(this.button_write);
+            this.Controls.Add(this.textBox_input);
+            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.button_NewFile);
             this.Controls.Add(this.button_NewDir);
             this.Controls.Add(this.textBox_NewFileName);
@@ -197,6 +313,10 @@
             this.Text = "文件系统";
             this.Load += new System.EventHandler(this.Form_FileSystem_Load);
             this.contextMenuStrip1.ResumeLayout(false);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -216,10 +336,21 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button_back;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem_NewDir;
         private System.Windows.Forms.TextBox textBox_NewDirName;
         private System.Windows.Forms.Button button_NewDir;
         private System.Windows.Forms.TextBox textBox_NewFileName;
         private System.Windows.Forms.Button button_NewFile;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton toolStripButton_Refresh;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_Free;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_Used;
+        private System.Windows.Forms.ToolStripMenuItem 删除ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton toolStripButton_exit;
+        private System.Windows.Forms.ToolStripButton toolStripButton_save;
+        private System.Windows.Forms.TextBox textBox_input;
+        private System.Windows.Forms.Button button_write;
     }
 }

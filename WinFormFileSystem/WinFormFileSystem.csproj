@@ -90,9 +90,11 @@
     <Compile Include="HttpRequest\HttpClientFileOperation.cs" />
     <Compile Include="HttpRequest\HttpClientGetDirInfo.cs" />
     <Compile Include="HttpRequest\HttpClientGetUserCounts.cs" />
+    <Compile Include="HttpRequest\HttpClientIsAvailable.cs" />
     <Compile Include="HttpRequest\HttpClientListUsers.cs" />
     <Compile Include="HttpRequest\HttpClientLogin.cs" />
     <Compile Include="HttpRequest\HttpClientSignUp.cs" />
+    <Compile Include="HttpRequest\HttpClientWrite.cs" />
     <Compile Include="JsonHelper.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -147,6 +149,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Images\Fire.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\save.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

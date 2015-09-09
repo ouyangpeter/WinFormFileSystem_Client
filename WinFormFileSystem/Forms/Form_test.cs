@@ -77,6 +77,17 @@ namespace WinFormFileSystem.Forms
                 string response = Convert.ToBoolean(httpClient.GetResponse()).ToString();
                 DebugWrite("result: " + response);
             }
+            if(radioButton_isAvailable.Checked)
+            {
+                httpClient = new HttpClientIsAvailable();
+                JsonHelper jsonHelper = (JsonHelper)httpClient.GetResponse();
+                if (jsonHelper.IsSuccess())
+                {
+                    DebugWrite("True");
+                }
+                else
+                    DebugWrite("Faile");
+            }
            
 
         }

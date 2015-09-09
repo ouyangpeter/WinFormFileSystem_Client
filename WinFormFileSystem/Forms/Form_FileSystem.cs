@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using WinFormFileSystem.HttpRequest;
 using Filesystem;
 using System.Diagnostics;
+using System.Threading;
 
 
 namespace WinFormFileSystem.Forms
@@ -21,6 +22,7 @@ namespace WinFormFileSystem.Forms
         {
             InitializeComponent();
             curDir = "root";
+            this.Text += "_"+Account.GetUname();
         }
 
         private void Form_FileSystem_Load(object sender, EventArgs e)
@@ -75,11 +77,11 @@ namespace WinFormFileSystem.Forms
                     MessageBox.Show(jsonHelper.GetErrorMsg());
                 }
             }
-            else if("1" == fileType)
+            else if ("1" == fileType)
             {
-                if(DoCommond("readFile", fileName))
+                if (DoCommond("readFile", fileName))
                 {
-                    
+
                 }
                 else
                 {
@@ -102,15 +104,68 @@ namespace WinFormFileSystem.Forms
             {
                 return Commond_newDir(prams);
             }
-            else if(commond == "newFile")
+            else if (commond == "newFile")
             {
                 return Commond_newFile(prams);
             }
-            else if(commond == "readFile")
+            else if (commond == "readFile")
             {
                 return Commond_readFile(prams);
             }
+            else if (commond == "delDir")
+            {
+                return Commond_delDir(prams);
+            }
+            else if (commond == "delFile")
+            {
+                return Commond_delFile(prams);
+            }
+            else if(commond == "save")
+            {
+                return Commond_save();
+            }
             return false;
+        }
+
+        bool Commond_save()
+        {
+            string uname = Account.GetUname();
+            string passwd = Account.GetPasswd();
+            HttpClientBase httpClient = new HttpClientFileOperation();
+            httpClient.AddHeader("user-uname", uname);
+            httpClient.AddHeader("user-passwd", passwd);
+            httpClient.AddHeader("file-commond", "save");
+            httpClient.AddHeader("file-params", "");
+            httpClient.AddHeader("dir-ls", curDir);
+            jsonHelper = (JsonHelper)httpClient.GetResponse();
+            return jsonHelper.IsSuccess();
+        }
+
+        bool Commond_delDir(string dirName)
+        {
+            string uname = Account.GetUname();
+            string passwd = Account.GetPasswd();
+            HttpClientBase httpClient = new HttpClientFileOperation();
+            httpClient.AddHeader("user-uname", uname);
+            httpClient.AddHeader("user-passwd", passwd);
+            httpClient.AddHeader("file-commond", "delDir");
+            httpClient.AddHeader("file-params", dirName);
+            httpClient.AddHeader("dir-ls", curDir);
+            jsonHelper = (JsonHelper)httpClient.GetResponse();
+            return jsonHelper.IsSuccess();
+        }
+        bool Commond_delFile(string fileName)
+        {
+            string uname = Account.GetUname();
+            string passwd = Account.GetPasswd();
+            HttpClientBase httpClient = new HttpClientFileOperation();
+            httpClient.AddHeader("user-uname", uname);
+            httpClient.AddHeader("user-passwd", passwd);
+            httpClient.AddHeader("file-commond", "delFile");
+            httpClient.AddHeader("file-params", fileName);
+            httpClient.AddHeader("dir-ls", curDir);
+            jsonHelper = (JsonHelper)httpClient.GetResponse();
+            return jsonHelper.IsSuccess();
         }
 
         bool Commond_readFile(string fileName)
@@ -228,7 +283,7 @@ namespace WinFormFileSystem.Forms
                 MessageBox.Show("文件夹名字不能为空");
                 return;
             }
-            if(DoCommond("newDir", newDirName))
+            if (DoCommond("newDir", newDirName))
             {
                 textBox_NewDirName.Text = "";
                 ListDir(curDir);
@@ -257,6 +312,114 @@ namespace WinFormFileSystem.Forms
                 MessageBox.Show(jsonHelper.GetErrorMsg());
             }
         }
+
+        private void toolStripButton_Refresh_Click(object sender, EventArgs e)
+        {
+            ListDir(curDir);
+        }
+
+        private void 删除ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string fileName = "";
+            string fileType = "";
+            try
+            {
+                fileName = listView_Dir.SelectedItems[0].SubItems[0].Text;
+                fileType = listView_Dir.SelectedItems[0].SubItems[1].Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("没有选中要删除的文件");
+                return;
+            }
+
+            if (fileType == "0") //文件夹
+            {
+                if (DoCommond("delDir", fileName))
+                {
+                    ListDir(curDir);
+                }
+                else
+                {
+                    MessageBox.Show(jsonHelper.GetErrorMsg());
+                }
+            }
+            else if (fileType == "1")
+            {
+                if (DoCommond("delFile", fileName))
+                {
+                    ListDir(curDir);
+                }
+                else
+                {
+                    MessageBox.Show(jsonHelper.GetErrorMsg());
+                }
+            }
+
+        }
+
+        private void toolStripButton_exit_Click(object sender, EventArgs e)
+        {
+            Thread th = new Thread(fun => { Application.Run(new Form_Login()); });
+            th.Start();
+            this.Close();
+        }
+
+        private void toolStripButton_save_Click(object sender, EventArgs e)
+        {
+            if (DoCommond("save"))
+            {
+                MessageBox.Show("已存盘");
+            }
+            else
+                MessageBox.Show("存盘失败");
+        }
+
+        private void button_write_Click(object sender, EventArgs e)
+        {
+            string fileName = "";
+            string fileType = "";
+            try
+            {
+                fileName = listView_Dir.SelectedItems[0].SubItems[0].Text;
+                fileType = listView_Dir.SelectedItems[0].SubItems[1].Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("没有选中要写入的文件");
+                return;
+            }
+            if(textBox_input.Text == "")
+            {
+                MessageBox.Show("没有输入要写入的字符");
+                return;
+            }
+            if(fileType == "0")
+            {
+                MessageBox.Show("不能对文件夹写入");
+                return;
+            }
+            string uname = Account.GetUname();
+            string passwd = Account.GetPasswd();
+            HttpClientBase httpClient = new HttpClientWrite();
+            httpClient.AddHeader("user-uname", uname);
+            httpClient.AddHeader("user-passwd", passwd);
+            httpClient.AddHeader("file-commond", "back");
+            httpClient.AddHeader("file-params", fileName);
+            httpClient.AddHeader("dir-ls", curDir);
+            httpClient.AddHeader("file-input", textBox_input.Text);
+            jsonHelper = (JsonHelper)httpClient.GetResponse();
+            if(jsonHelper.IsSuccess())
+            {
+                MessageBox.Show("写入成功");
+                textBox_input.Text = "";
+            }
+            else
+            {
+                MessageBox.Show(jsonHelper.GetErrorMsg());
+            }
+        }
+
 
 
     }
