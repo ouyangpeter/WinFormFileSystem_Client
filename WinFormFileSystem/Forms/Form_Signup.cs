@@ -45,5 +45,14 @@ namespace WinFormFileSystem.Forms
             else
                 MessageBox.Show("注册失败");
         }
+
+
+        private void textBox_passwd_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_signup_Click(null, null);
+            }
+        }
     }
 }
