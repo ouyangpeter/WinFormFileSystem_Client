@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_ListUsers));
             this.columnHeader_uname = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader_passwd = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.listView_UserLists = new System.Windows.Forms.ListView();
@@ -78,6 +79,7 @@
             this.ClientSize = new System.Drawing.Size(440, 394);
             this.Controls.Add(this.listView_UserLists);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form_ListUsers";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

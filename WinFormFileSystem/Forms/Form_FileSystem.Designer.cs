@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_FileSystem));
             this.listView_Dir = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -47,6 +48,9 @@
             this.textBox_NewFileName = new System.Windows.Forms.TextBox();
             this.button_NewFile = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton_Refresh = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_save = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton_exit = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_Free = new System.Windows.Forms.ToolStripStatusLabel();
@@ -54,9 +58,6 @@
             this.toolStripStatusLabel_Used = new System.Windows.Forms.ToolStripStatusLabel();
             this.textBox_input = new System.Windows.Forms.TextBox();
             this.button_write = new System.Windows.Forms.Button();
-            this.toolStripButton_Refresh = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_save = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton_exit = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -202,6 +203,36 @@
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripButton_Refresh
+            // 
+            this.toolStripButton_Refresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_Refresh.Image = global::WinFormFileSystem.Properties.Resources.refresh;
+            this.toolStripButton_Refresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_Refresh.Name = "toolStripButton_Refresh";
+            this.toolStripButton_Refresh.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_Refresh.Text = "刷新";
+            this.toolStripButton_Refresh.Click += new System.EventHandler(this.toolStripButton_Refresh_Click);
+            // 
+            // toolStripButton_save
+            // 
+            this.toolStripButton_save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_save.Image = global::WinFormFileSystem.Properties.Resources.save;
+            this.toolStripButton_save.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_save.Name = "toolStripButton_save";
+            this.toolStripButton_save.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_save.Text = "存盘";
+            this.toolStripButton_save.Click += new System.EventHandler(this.toolStripButton_save_Click);
+            // 
+            // toolStripButton_exit
+            // 
+            this.toolStripButton_exit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton_exit.Image = global::WinFormFileSystem.Properties.Resources.exit;
+            this.toolStripButton_exit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton_exit.Name = "toolStripButton_exit";
+            this.toolStripButton_exit.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton_exit.Text = "退出";
+            this.toolStripButton_exit.Click += new System.EventHandler(this.toolStripButton_exit_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -259,36 +290,6 @@
             this.button_write.UseVisualStyleBackColor = true;
             this.button_write.Click += new System.EventHandler(this.button_write_Click);
             // 
-            // toolStripButton_Refresh
-            // 
-            this.toolStripButton_Refresh.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_Refresh.Image = global::WinFormFileSystem.Properties.Resources.refresh;
-            this.toolStripButton_Refresh.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_Refresh.Name = "toolStripButton_Refresh";
-            this.toolStripButton_Refresh.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_Refresh.Text = "刷新";
-            this.toolStripButton_Refresh.Click += new System.EventHandler(this.toolStripButton_Refresh_Click);
-            // 
-            // toolStripButton_save
-            // 
-            this.toolStripButton_save.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_save.Image = global::WinFormFileSystem.Properties.Resources.save;
-            this.toolStripButton_save.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_save.Name = "toolStripButton_save";
-            this.toolStripButton_save.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_save.Text = "存盘";
-            this.toolStripButton_save.Click += new System.EventHandler(this.toolStripButton_save_Click);
-            // 
-            // toolStripButton_exit
-            // 
-            this.toolStripButton_exit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton_exit.Image = global::WinFormFileSystem.Properties.Resources.exit;
-            this.toolStripButton_exit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton_exit.Name = "toolStripButton_exit";
-            this.toolStripButton_exit.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton_exit.Text = "退出";
-            this.toolStripButton_exit.Click += new System.EventHandler(this.toolStripButton_exit_Click);
-            // 
             // Form_FileSystem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -307,6 +308,7 @@
             this.Controls.Add(this.textBox_curDir);
             this.Controls.Add(this.listView_Dir);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Form_FileSystem";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
